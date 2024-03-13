@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bài 4</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<body>
+<div class="bai4">
+    <div class="bai4-container">
+        <div class="bai4-heading">
+            TÍNH CHỈ SỐ BMI
+        </div>
+        <form action="" class="bai4-form">
+            <div class="weight">
+                <label for="weight">Nhập cân nặng ?</label><br>
+                <input type="text" name="weight" id="weight">
+            </div>
+            <div class="height">
+                <label for="height">Nhập chiều cao ?</label><br>
+                <input type="text" name="height" id="height">
+            </div>
+            <div class="bai4-option">
+                <label for="option">Chọn loại tuổi ?</label><br>
+                <select name="" id="bai4-select" class="bai3-select">
+                    <option value="" id="bai4-0">Chọn</option>
+                    <option value="1"  id="bai4-1">Trung niên</option>
+                    <option value="2"  id="bai4-2">Trung niên, già lớn tuổi</option>
+                    <option value="3" id="bai4-3">Già, lớn tuổi</option>
+               </select>
+            </div>
+           <input type="button" value="       Tính BMI       " class="bai4-button" onclick="bai4()">
+        </form>
+        <div class="ketqua">
+            KẾT QUẢ:
+            <div id="bai4-number"></div>
+            <div id="categories"></div>
+            <div id="message"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+  function bai4(){
+    const health = [
+        {
+             loai: '1',
+             message: 'Khám định kỳ '
+         },
+         {
+             loai: '2',
+             message: 'Tập thể dục thường xuyên '
+         },
+         {
+             loai: '3',
+             message: 'Hạn chế ăn mỡ động vật '
+         }
+     ]
+     const weight = parseFloat(document.getElementById("weight").value);
+     const height = parseFloat(document.getElementById("height").value);
+     const bai4Select = document.getElementById("bai4-select");
+     const bai4Option =  bai4Select.options[bai4Select.selectedIndex].value;
+     const BMI = weight/(height*height)
+     for(let i =0 ; i< health.length ; i++){
+        const loaiVar = health[i].loai
+        if(bai4Option===loaiVar){
+            console.log(health[i].message)
+          document.getElementById("message").innerHTML = health[i].message
+        }
+       }
+    document.getElementById("bai4-number").innerHTML = BMI
+    const categories = document.getElementById("categories")
+    if(BMI<18.5){
+    categories.innerHTML = "dưới chuẩn"
+    }else if(BMI >= 18.5 && BMI <24.9){
+        categories.innerHTML = "Bình thường"
+    }else if(BMI>25 && BMI<29.9){
+        categories.innerHTML = "Thừa cân "
+    }else if(BMI>30 && BMI<34.9){
+        categories.innerHTML = "Béo phì cấp độ I"
+    }else if(BMI>35 && BMI<39.9){
+        categories.innerHTML = "Béo phì cấp độ II"
+    }else{
+        categories.innerHTML = "Béo phì cấp độ III"
+    }
+  
+}
+</script>
+
+<style>
+  .bai4{
+   
+    width: 65%;
+    height: 500px;
+    background: linear-gradient(115deg, rgb(24, 21, 78) 0%, rgb(57, 55, 190) 0%, rgba(173,145,84,1) 100%, rgba(82,117,88,0.9189189189189189) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 200px;
+}
+.ketqua {
+    color: red;
+}
+
+.bai4-container{
+    height: 450px;
+    width: 300px;
+    border: 3px solid black ;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+.bai4-heading{
+    color: white;
+    background: #607493;
+    width: 98.5%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    text-align: center;
+    padding: none;
+}
+.bai4-form{
+    margin-top: 30px;
+}
+.bai4-button{
+    margin: 20px;
+    padding: 10px;
+    color: white;
+    background-color: #423caa;
+}
+</style>
+</html>

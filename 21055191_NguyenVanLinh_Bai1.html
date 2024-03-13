@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc I</title>
+    <script>
+        function giaiPhuongTrinhBacI() {
+            var a = parseFloat(document.getElementById('heSoA').value);
+            var b = parseFloat(document.getElementById('heSoB').value);
+            var ketQuaElement = document.getElementById('KẾT QUẢ LÀ');
+
+            if (isNaN(a) || isNaN(b)) {
+                ketQuaElement.textContent = "Vui lòng nhập đúng định dạng số.";
+                return;
+            }
+
+            if (a === 0) {
+                if (b === 0) {
+                    ketQuaElement.textContent = "Phương trình có vô số nghiệm";
+                } else {
+                    ketQuaElement.textContent = "Phương trình vô nghiệm";
+                }
+            } else {
+                var x = -b / a;
+                ketQuaElement.textContent = "Nghiệm của phương trình là: x = " + x;
+            }
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h1>Giải phương trình bậc I</h1>
+
+    <form>
+        <label for="heSoA">Nhập hệ số a:</label>
+        <input type="text" id="heSoA" placeholder="Nhập số"><br>
+
+        <label for="heSoB">Nhập hệ số b:</label>
+        <input type="text" id="heSoB" placeholder="Nhập số"><br>
+
+        <button type="button" onclick="giaiPhuongTrinhBacI()">Giải phương trình </button>
+    </form>
+
+    <div id="KẾT QUẢ LÀ"></div>
+</center>
+</body>
+</html>
